@@ -54,6 +54,13 @@ jobs:
         id: login-eks
         run:
           aws eks update-kubeconfig --name demo --region us-east-1  
+      # Install MongoDB Shell
+      - name: Install MongoDB Shell (mongosh)
+        run: |
+          wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -
+          echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+          sudo apt-get update
+          sudo apt-get install -y mongodb-mongosh
       - name: Install mongoDB helm charts
         id: login-mongo
         run: |
