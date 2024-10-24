@@ -63,7 +63,7 @@ jobs:
       - name: connect to mongodb instance
         id: mongo-connection
         run:
-         mongosh mongodb://nasi:nasi1234@<nodeip>:30005/mp3s?authSource=admin
+         mongosh mongodb://nasi:nasi1234@<3.80.245.189>:30005/mp3s?authSource=admin
       - name: Install postgres helm charts
         id: login-postgres
         run: |
@@ -79,7 +79,7 @@ jobs:
           export PGPASSWORD='cnd2023'
           
           # Execute the init.sql script
-          psql 'postgres://nasi:cnd2023@<nodeip>:30003/authdb' -f ./init.sql
+          psql 'postgres://nasi:cnd2023@<3.80.245.189>:30003/authdb' -f ./init.sql
       - name: deploy rabbitmq
         id: rabbitmq-srv
         run: |
