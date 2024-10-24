@@ -7,7 +7,7 @@ resource "aws_ecr_repository" "foo" {
 }
 # EKS Cluster
 resource "aws_eks_cluster" "this" {
-  name     = "clustername"
+  name     = "demo"
   role_arn = aws_iam_role.cluster.arn
   version  = "1.28"
 
