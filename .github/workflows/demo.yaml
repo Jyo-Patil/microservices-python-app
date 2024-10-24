@@ -59,7 +59,7 @@ jobs:
         run: |
             cd ..
             cd Helm_charts/MongoDB
-            helm install mongo .
+            helm install mongo . --replace
       - name: connect to mongodb instance
         id: mongo-connection
         run:
