@@ -56,9 +56,9 @@ jobs:
           aws eks update-kubeconfig --name demo --region us-east-1  
       - name: Install mongoDB helm charts
         id: login-mongo
-        run: |
-         cd Helm_charts/MongoDB
-         helm install mongo .
+        run: pwd
+        #  cd Helm_charts/MongoDB
+        #  helm install mongo .
       - name: connect to mongodb instance
         id: mongo-connection
         run:
