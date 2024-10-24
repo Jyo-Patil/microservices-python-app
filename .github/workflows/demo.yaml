@@ -76,7 +76,7 @@ jobs:
         id: login-postgres
         run: |
          cd ..
-         cd Postgres
+         cd Helm_charts/Postgres
          helm install postgres .
       - name: Install PostgreSQL client
         run: sudo apt-get install -y postgresql-client
@@ -92,7 +92,7 @@ jobs:
         id: rabbitmq-srv
         run: |
           cd ..
-          cd RabbitMQ
+          cd Helm_charts/RabbitMQ
           helm install rabbitmq .
       - name: Auth service
         id: auth-srv
