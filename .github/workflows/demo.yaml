@@ -83,11 +83,7 @@ jobs:
       - name: Connect to Postgres instance
         id: connect-postgres
         run: |
-          # Define your connection string
-          export PGPASSWORD='cnd2023'
-          
-          # Execute the init.sql script
-          psql 'postgres://nasi:cnd2023@3.80.245.189:30003/authdb' -f ./init.sql
+         psql 'postgres://nasi:cnd2023@3.80.245.189:30003/authdb'
       - name: deploy rabbitmq
         id: rabbitmq-srv
         run: |
