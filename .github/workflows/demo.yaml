@@ -66,7 +66,12 @@ jobs:
         run: |
             cd ..
             cd Helm_charts/MongoDB
-            helm uninstall mongo
+            # Check if the Helm release "mongo" exists
+            if helm list --filter '^mongo$' -q | grep -q 'mongo'; then
+                helm uninstall mongo
+            else
+                echo "Release 'mongo' not found. Skipping uninstall."
+            fi
             helm install mongo .
       - name: connect to mongodb instance
         id: mongo-connection
@@ -77,7 +82,12 @@ jobs:
         run: |
          cd ..
          cd Helm_charts/Postgres
-         helm uninstall postgres
+         # Check if the Helm release "postgres" exists
+         if helm list --filter '^postgres$' -q | grep -q 'postgres'; then
+            helm uninstall postgres
+         else
+            echo "Release 'postgres' not found. Skipping uninstall."
+         fi
          helm install postgres .
       - name: Install PostgreSQL client
         run: sudo apt-get install -y postgresql-client
@@ -90,7 +100,12 @@ jobs:
         run: |
           cd ..
           cd Helm_charts/RabbitMQ
-          helm uninstall rabbitmq
+          # Check if the Helm release "rabbitmq" exists
+          if helm list --filter '^rabbitmq$' -q | grep -q 'rabbitmq'; then
+              helm uninstall rabbitmq
+          else
+              echo "Release 'rabbitmq' not found. Skipping uninstall."
+          fi
           helm install rabbitmq .
       - name: Auth service
         id: auth-srv
