@@ -38,7 +38,7 @@ jobs:
           terraform plan
       - name: Terraform Apply
         run: |
-          terraform apply -auto-approve
+          terraform destroy -auto-approve
       - name: Get Outputs
         run: |
           terraform output -json > tf-all-output.json
